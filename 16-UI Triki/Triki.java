@@ -78,6 +78,7 @@ public class Triki extends JFrame{
 		setVisible(true);
 
 		imprimirTablero();
+		ganoPartida();
 	}
 
 	public void imprimirTablero(){
@@ -103,6 +104,10 @@ public class Triki extends JFrame{
 		}
 
 	}
+	public void ganoPartida(){
+		if(this.tablero_interno[0][0] == 'X' && this.tablero_interno[1][0] == 'X' && this.tablero_interno[2][0] == 'X'){
+			System.out.println("Gano USu");
 
-
+		}
+	}
 }
