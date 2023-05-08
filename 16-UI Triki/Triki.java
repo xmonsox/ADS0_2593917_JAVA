@@ -10,7 +10,7 @@ public class Triki extends JFrame{
 	int turno;
 	char tablero_interno [][];
 	JLabel tablero_lbls [][];
-	JLabel etq_usuario;
+	JLabel etq_usuario; 
 
 	public Triki(){
 		this.ganador = 0;
