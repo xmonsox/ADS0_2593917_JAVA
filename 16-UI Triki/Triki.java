@@ -63,7 +63,7 @@ public class Triki extends JFrame{
                 MouseAdapter evento = new MouseAdapter(){
                     @Override
 	                public void mouseClicked(MouseEvent e) {
-	                    marcarCasilla( fila, columna);
+	                    marcarCasillaUser( fila, columna);
 	                }             
                 };
                 this.tablero_lbls[i][j].addMouseListener(evento);
@@ -93,9 +93,10 @@ public class Triki extends JFrame{
 	}
 
 	public void marcarCasillaUser(int fila, int columna){
+		System.out.println("...."+this.turno);
 		if( this.tablero_interno[fila][columna]=='-'){
 			System.out.println("U");
-			marcarCasilla(fila, columna);
+			//    (fila, columna);
 			ganoPartida();
 			
 			this.turno = (this.turno%2)+1;
@@ -105,8 +106,9 @@ public class Triki extends JFrame{
 				
 				ganoPartida();
 				this.turno = (this.turno%2)+1;
+				System.out.println("-"+this.turno);
 			}
-
+				System.out.println(","+this.turno);
 		}else{
 			System.out.println("La Posicion es invalida.");
 		}
@@ -134,7 +136,7 @@ public class Triki extends JFrame{
 	public void ganoPartida(){
 		for (int i = 0; i < 3; i++) {
 			if (tablero_interno[i][0] == tablero_interno[i][1] && tablero_interno[i][0] == tablero_interno[i][2] && tablero_interno[i][0] != '-') {
-				ganador = (tablero_interno[i][0] == 'X') ? 1 : 2;
+				ganador = (tablero_interno[i][0]  == 'X') ? 1 : 2;
 				System.out.println("El ganador es el jugador " + ganador);
 				return;
 			}
@@ -158,6 +160,8 @@ public class Triki extends JFrame{
 		}
 	}
 	public void validaMaquina(){
+		int fila_random =0;
+		int columna_random=0;
 		if(tablero_interno[0][0] == '0' && tablero_interno[0][1] == '0' && tablero_interno[0][2] == '-'){
 			marcarCasilla(0,2);
 		}else if(tablero_interno[0][0] == '0' && tablero_interno[0][2] == '0' && tablero_interno[0][1] == '-'){
@@ -207,8 +211,66 @@ public class Triki extends JFrame{
 		}else if(tablero_interno[1][1] == '0' && tablero_interno[0][2] == '0' && tablero_interno[2][0] == '-'){
 			marcarCasilla(2,0);	
 		}else if(tablero_interno[0][2] == '0' && tablero_interno[0][1] == '0' && tablero_interno[0][0] == '-'){
+			marcarCasilla(0,1);
+		}else{
+			fila_random = (int)(Math.random()*2);
+			columna_random = (int)(Math.random()*2);
+			while(tablero_interno[fila_random][columna_random] != ' '){
+				fila_random = (int)(Math.random()*2);
+				columna_random = (int)(Math.random()*2);
+			}
+			tablero_interno[fila_random][columna_random]='0';
+			//defensa
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[0][1] == 'X' && tablero_interno[0][2] == '-'){
+			marcarCasilla(0,2);
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[0][2] == 'X' && tablero_interno[0][1] == '-'){
+			marcarCasilla(0,1);	
+		}else if(tablero_interno[0][2] == 'X' && tablero_interno[0][1] == 'X' && tablero_interno[0][0] == '-'){
+			marcarCasilla(0,0);	
+		}else if(tablero_interno[1][0] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[1][2] == '-'){
+			marcarCasilla(1,2);	
+		}else if(tablero_interno[1][0] == 'X' && tablero_interno[1][2] == 'X' && tablero_interno[1][1] == '-'){
+			marcarCasilla(1,1);	
+		}else if(tablero_interno[1][2] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[1][0] == '-'){
+			marcarCasilla(1,0);	
+		}else if(tablero_interno[2][0] == 'X' && tablero_interno[2][1] == 'X' && tablero_interno[2][2] == '-'){
+			marcarCasilla(2,2);	
+		}else if(tablero_interno[2][0] == 'X' && tablero_interno[2][2] == 'X' && tablero_interno[2][1] == '-'){
+			marcarCasilla(2,1);	
+		}else if(tablero_interno[2][1] == 'X' && tablero_interno[2][2] == 'X' && tablero_interno[2][0] == '-'){
+			marcarCasilla(2,0);	
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[1][0] == 'X' && tablero_interno[2][0] == '-'){
+			marcarCasilla(2,0);	
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[2][0] == 'X' && tablero_interno[1][0] == '-'){
+			marcarCasilla(1,0);	
+		}else if(tablero_interno[2][0] == 'X' && tablero_interno[1][0] == 'X' && tablero_interno[0][0] == '-'){
+			marcarCasilla(0,0);	
+		}else if(tablero_interno[0][1] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[2][1] == '-'){
+			marcarCasilla(2,1);	
+		}else if(tablero_interno[2][1] == 'X' && tablero_interno[0][1] == 'X' && tablero_interno[1][1] == '-'){
+			marcarCasilla(1,1);	
+		}else if(tablero_interno[2][1] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[0][1] == '-'){
+			marcarCasilla(0,1);	
+		}else if(tablero_interno[0][2] == 'X' && tablero_interno[1][2] == 'X' && tablero_interno[2][2] == '-'){
+			marcarCasilla(2,2);	
+		}else if(tablero_interno[0][2] == 'X' && tablero_interno[2][2] == 'X' && tablero_interno[1][2] == '-'){
+			marcarCasilla(1,2);	
+		}else if(tablero_interno[2][2] == 'X' && tablero_interno[1][2] == 'X' && tablero_interno[0][2] == '-'){
+			marcarCasilla(0,2);	
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[2][2] == '-'){
+			marcarCasilla(2,2);	
+		}else if(tablero_interno[0][0] == 'X' && tablero_interno[2][2] == 'X' && tablero_interno[1][1] == '-'){
+			marcarCasilla(1,1);	
+		}else if(tablero_interno[1][1] == 'X' && tablero_interno[2][2] == 'X' && tablero_interno[0][0] == '-'){
+			marcarCasilla(0,0);	
+		}else if(tablero_interno[2][0] == 'X' && tablero_interno[1][1] == 'X' && tablero_interno[0][2] == '-'){
+			marcarCasilla(0,2);	
+		}else if(tablero_interno[2][0] == 'X' && tablero_interno[0][2] == 'X' && tablero_interno[1][1] == '-'){
+			marcarCasilla(1,1);	
+		}else if(tablero_interno[1][1] == 'X' && tablero_interno[0][2] == 'X' && tablero_interno[2][0] == '-'){
+			marcarCasilla(2,0);	
+		}else if(tablero_interno[0][2] == 'X' && tablero_interno[0][1] == 'X' && tablero_interno[0][0] == '-'){
 			marcarCasilla(0,1);	
 		}
-
 	}
 }
