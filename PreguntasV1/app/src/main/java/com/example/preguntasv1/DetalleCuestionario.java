@@ -70,7 +70,7 @@ public class DetalleCuestionario extends AppCompatActivity {
 
         TextView fecha_inicio = new TextView(getApplicationContext());
         fecha_inicio.setText("Fecha Inicio: " + fechaFormateada);
-        fecha_inicio.setTextColor(getColor(R.color.Negro));
+        fecha_inicio.setTextColor(Color.parseColor("#000000"));
         linearResumen.addView(fecha_inicio);
 
         ExtraerDetalleCuestionario();
@@ -174,7 +174,7 @@ public class DetalleCuestionario extends AppCompatActivity {
                     if (status.equalsIgnoreCase("OK") && descr.equalsIgnoreCase(respuest)){
 
                         opci_1.setTextColor(Color.rgb(0,255,0));
-                        correctas.setTextColor(Color.rgb(0,255,0));
+                        correctas.setTextColor(Color.BLACK);
                         conteo_correctas +=1;
 
                         //System.out.println("Entre a verde "+ respuest);

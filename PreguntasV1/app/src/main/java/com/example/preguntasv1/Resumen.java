@@ -114,7 +114,8 @@ public class Resumen extends AppCompatActivity {
                 // Crear el Button dentro de la CardView
                 Button detalle = new Button(getApplicationContext());
                 detalle.setText("Detalles");
-                detalle.setBackgroundColor(getColor(R.color.morado_claro));
+                //detalle.setBackgroundColor(getColor(R.color.morado_claro));
+                detalle.setBackgroundColor(Color.parseColor("#BA68C8"));
                 LinearLayout.LayoutParams detalleParams = new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
