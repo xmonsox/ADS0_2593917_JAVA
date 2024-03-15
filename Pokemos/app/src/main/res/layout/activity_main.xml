@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="15dp"
+    >
+    <ImageView
+        android:id="@+id/loading_pokemon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/loading_pokeball"
+        android:visibility="gone"></ImageView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:src="@drawable/titulo_pokemon"
+        ></ImageView>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:id="@+id/LinearMayor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_pokemones"
+                android:layout_width="match_parent"
+                android:layout_height="650dp"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <Button
+                    android:id="@+id/btnAnterior"
+                    android:onClick="anterior"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ic_button_drawable"
+                    android:backgroundTint="#385BA9"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Anterior" />
+
+                <Button
+                    android:id="@+id/btnSiguiente"
+                    android:onClick="siguiente"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/ic_button_drawable"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Siguiente" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
